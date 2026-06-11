@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wings of Fire Persona</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+        }
+
+        @keyframes magic-flash {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); filter: brightness(2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(var(--drift)) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes rainbow-border {
+            0% { border-color: #8b5cf6; box-shadow: 0 0 15px #8b5cf6; }
+            33% { border-color: #ec4899; box-shadow: 0 0 25px #ec4899; }
+            66% { border-color: #3b82f6; box-shadow: 0 0 15px #3b82f6; }
+            100% { border-color: #8b5cf6; box-shadow: 0 0 15px #8b5cf6; }
+        }
+
+        @keyframes text-shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .animus-magic-flash {
+            animation: magic-flash 1.5s ease-out forwards;
+        }
+
+        .magic-particle {
+            position: fixed;
+            pointer-events: none;
+            background: white;
+            border-radius: 50%;
+            z-index: 100;
+            animation: float-particle var(--duration) linear infinite;
+        }
+
+        .animus-card-glow {
+            animation: rainbow-border 4s infinite linear;
+        }
+
+        .shine-text {
+            background: linear-gradient(90deg, #fff, #a855f7, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shine 3s linear infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
