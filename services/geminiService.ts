@@ -19,10 +19,10 @@ export async function analyzeQuizResults(scores: Record<string, number>, answers
   const isHybrid = sortedScores[1][1] > (sortedScores[0][1] * 0.7);
   
   // Animus logic: 
-  // 1. Score-based: High points (24+) is 100%, Medium (16-23) is 20%.
-  // 2. Wildcard: 3% baseline chance for ANYONE, even with 0 points.
-  const scoreBasedAnimus = animusScore > 24 || (animusScore > 15 && Math.random() < 0.2);
-  const wildcardAnimus = Math.random() < 0.03; // 3% chance "Miracle" bloodline
+  // 1. Score-based: High points (24+) is 100%, Medium (16-23) is 50%, Low (1-15) is 30%
+  // 2. Wildcard: 25% baseline chance for ANYONE, even with 0 points (increased from 3%)
+  const scoreBasedAnimus = animusScore > 24 || (animusScore > 15 && Math.random() < 0.5) || (animusScore > 0 && Math.random() < 0.3);
+  const wildcardAnimus = Math.random() < 0.25; // 25% chance "Miracle" bloodline
   
   const isAnimus = scoreBasedAnimus || wildcardAnimus;
 
